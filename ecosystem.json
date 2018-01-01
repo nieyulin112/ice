@@ -1,0 +1,27 @@
+{
+	"apps": [{
+        "name": "Ice",
+        "script": "server.js",
+        "env": {
+            "COMMON_VERIABLE": "true"
+        },
+        "env_production": {
+            "NODE_ENV": "production"
+        }
+	}],
+    "deploy": {
+        "production": {
+            "user": "manager",
+            "host": ["120.26.235.4"],
+            "ref": "origin/master",
+            "repo": "https://github.com/nieyulin112/ice.git",
+            "path": "/var/www/ice/production",
+            "ssh_options": "StrictHostKeyChecking=no",
+            "post-deploy": "npm install ",
+            "pre-deploy-local": "eco 'Deploy Done'",
+            "env": {
+                "NODE_ENV": "production"
+            }
+        }
+    }
+}
